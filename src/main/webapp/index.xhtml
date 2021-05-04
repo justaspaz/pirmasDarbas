@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head/>
+<h:body>
+    <h2>PCs:</h2>
+    <ol>
+        <ui:repeat value="#{pcs.getAllPC()}" var="pc">
+            <li>
+                <h:link value="#{pc.brand}" outcome="pc?pcId=#{pc.id}" />#{pc.pcName}:
+            </li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <label for="brand">Brand: </label>
+        <h:inputText id="brand" value="#{pcs.pcToCreate.brand}" required="true" />
+        <br/>
+        <label for="name">Name: </label>
+        <h:inputText id="name" value="#{pcs.pcToCreate.pcName}" required="true" />
+        <br/>
+        <h:commandButton value="Add new pc" action="#{pcs.createPC}" />
+    </h:form>
+    <h:link outcome="myBatis/index" value="MyBatis implementation"/>
+</h:body>
+</html>

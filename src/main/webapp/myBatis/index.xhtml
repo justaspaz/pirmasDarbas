@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+>
+<h:head/>
+<h:body>
+    <h1>MyBatis</h1>
+    <h2>PCs:</h2>
+    <ol>
+        <ui:repeat value="#{pcsMyBatis.allPCs}" var="pc">
+            <li>
+                <h:link value="#{pc.brand}#{pc.pcname}" outcome="pc?pcId=#{pc.id}" />
+            </li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <label for="brand">Brand: </label>
+        <h:inputText id="brand" value="#{pcsMyBatis.pcToCreate.brand}" required="true" />
+        <br/>
+        <label for="name">Name: </label>
+        <h:inputText id="name" value="#{pcsMyBatis.pcToCreate.pcname}" required="true" />
+        <br/>
+        <h:commandButton value="Add new pc" action="#{pcsMyBatis.createPC}" />
+    </h:form>
+    <h2>Modules:</h2>
+    <ol>
+        <ui:repeat value="#{pcmodulesMyBatis.allModules}" var="module">
+            <li>
+                #{module.brand}
+                #{module.name}
+            </li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <label for="module_brand">Brand: </label>
+        <h:inputText id="module_brand" value="#{pcmodulesMyBatis.moduleToCreate.brand}" required="true" />
+        <br/>
+        <label for="module_name">Name: </label>
+        <h:inputText id="module_name" value="#{pcmodulesMyBatis.moduleToCreate.name}" required="true" />
+        <br/>
+        <label for="module_price">Price: </label>
+        <h:inputText id="module_price" value="#{pcmodulesMyBatis.moduleToCreate.price}" required="true" />
+        <br/>
+        <h:commandButton value="Add new module" action="#{pcmodulesMyBatis.createModules}" />
+    </h:form>
+    <h:link value="Back to index" outcome="/index.xhtml"/>
+</h:body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:a="http://xmlns.jcp.org/jsf/passthrough"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head/>
+<h:body>
+    <h1>MyBatis</h1>
+    <h2>
+    Repair for #{repairForPCMyBatis.pc.brand} #{repairForPCMyBatis.pc.pcname} pc:</h2>
+    <ol>
+        <ui:repeat value="#{repairForPCMyBatis.repair}" var="repair">
+            <li>
+                <h:link value="#{repair.description}" outcome="repair?repairId=#{repair.id}" />
+            </li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <label for="description">Description: </label>
+        <h:inputText id="description" a:placeholder="description" value="#{repairForPCMyBatis.repairToCreate.description}" required="true" />
+        <br/>
+        <label for="cost">Cost: </label>
+        <h:inputText id="cost" a:placeholder="cost" value="#{repairForPCMyBatis.repairToCreate.cost}" required="true" />
+        <h:commandButton value="Add repair to the pc" action="#{repairForPCMyBatis.createRepair}" >
+            <f:param name="pcId" value="#{repairForPCMyBatis.pc.id}" />
+        </h:commandButton>
+    </h:form>
+    <h:link outcome="index" value="Back to main page"/>
+</h:body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head/>
+<h:body>
+    <h1>MyBatis</h1>
+    <h2>
+        Parts for #{pcModulesForRepairMyBatis.repair.description} repair:
+    </h2>
+    <ol>
+        <ui:repeat value="#{pcModulesForRepairMyBatis.modulesRepair}" var="modules">
+            <li>
+                #{modules.brand} #{modules.name} #{modules.price}
+            </li>
+        </ui:repeat>
+    </ol>
+    <h2>
+        Add module for #{pcModulesForRepairMyBatis.repair.description} repair:
+    </h2>
+    <ol>
+        <ui:repeat value="#{pcModulesForRepairMyBatis.module}" var="modules">
+            <li>
+                <h:form>
+                    #{modules.name} #{modules.price}
+                    <h:commandButton value="AddModuleToReapir" action="#{pcModulesForRepairMyBatis.assignModuleToRepair(modules.id)}" >
+                        <f:param name="repairId" value="#{pcModulesForRepairMyBatis.repair.id}" />
+                    </h:commandButton>
+                </h:form>
+            </li>
+        </ui:repeat>
+    </ol>
+    <h:link outcome="index" value="Back to main page"/>
+</h:body>
+</html>

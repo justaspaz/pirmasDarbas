@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head/>
+<h:body>
+    <h2>
+    Repair for #{repairsForPC.pc.brand} #{repairsForPC.pc.pcName} pc:</h2>
+    <ol>
+        <ui:repeat value="#{repairsForPC.pc.repair}" var="repair">
+            <li>
+                #{repair.description}#{repair.cost}
+            </li>
+        </ui:repeat>
+    </ol>
+    <h:form>
+        <label for="description">Description: </label>
+        <h:inputText id="description" value="#{repairsForPC.repairToCreate.description}" required="true" />
+        <br/>
+        <label for="cost">Cost: </label>
+        <h:inputText id="cost" value="#{repairsForPC.repairToCreate.cost}" required="true" />
+        <h:commandButton value="Add repair to the pc" action="#{repairsForPC.createRepair}" >
+            <f:param name="pcId" value="#{repairsForPC.pc.id}" />
+        </h:commandButton>
+    </h:form>
+    <h:link outcome="index" value="Back to main page"/>
+</h:body>
+</html>
