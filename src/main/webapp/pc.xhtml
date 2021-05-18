@@ -25,6 +25,27 @@
             <f:param name="pcId" value="#{repairsForPC.pc.id}" />
         </h:commandButton>
     </h:form>
+    <h:form>
+        <h:inputText id="pcName" value="#{repairsForPC.pc.pcName}" required="true"/>
+        <h:commandButton value="Change the pc`s name" action="#{updatePcDetails.updatePcName}">
+            <f:param name="pcId" value="#{repairsForPC.pc.id}"/>
+        </h:commandButton>
+    </h:form>
+    <h:form>
+        <h:inputText id="pcNumber" value="#{repairsForPC.pc.number}" required="true"/>
+        <h:commandButton value="Change the pc`s number" action="#{updatePcDetails.updatePcNumber()}">
+            <f:param name="pcId" value="#{repairsForPC.pc.id}"/>
+        </h:commandButton>
+    </h:form>
+    <h:form>
+        <h:outputText value="#{generatePcRepairNumber.pcGenerationStatus}"/>
+        <h:commandButton value="Generate pc number?"
+                         disabled="#{generatePcRepairNumber.pcNumberGenerationRunning}"
+                         action="#{generatePcRepairNumber.generateNewPcNumber()}">
+            <f:param name="pcId" value="#{repairsForPC.pc.id}"/>
+        </h:commandButton>
+    </h:form>
+
     <h:link outcome="index" value="Back to main page"/>
 </h:body>
 </html>

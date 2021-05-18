@@ -39,8 +39,10 @@ public class PcModulesForRepairMyBatis {
         this.repair = repairMapper.selectByPrimaryKey(repairId);
         this.modulesRepair = pcModulesMapper.selectByRepairId(repairId);
         List<Pcmodules> allModules = pcModulesMapper.selectAll();
-        for (Pcmodules modules: allModules) {
-            this.module.add(modules);
+        for (Pcmodules m: allModules) {
+            if(!modulesRepair.contains(m)){
+                this.module.add(m);
+            }
         }
     }
 
