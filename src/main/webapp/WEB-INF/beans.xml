@@ -9,10 +9,10 @@
     <interceptors>
         <class>lt.vu.interceptors.MethodLogger</class>
     </interceptors>
-    <decorators>
+    <!-- <decorators>
         <class>lt.vu.decorators.UpdatePCDestailsDecorator</class>
-    </decorators>
-    <alternatives>
-        <class>lt.vu.persistence.LenovoPCDAO</class>
-   </alternatives>
-</beans>
+    </decorators>-->
+    <!--<alternatives>
+         <class>lt.vu.services.PCLowGenarator</class>
+    </alternatives>-->
+ </beans>

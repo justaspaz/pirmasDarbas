@@ -14,7 +14,6 @@ import java.util.Set;
 })
 @Getter @Setter
 public class Pc implements Serializable {
-    private Integer version;
     private Integer number;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,15 +28,9 @@ public class Pc implements Serializable {
     @OneToMany(mappedBy = "pc")
     Set<Repair> repair;
 
-    @Column(name = "VERSION")
     @Version
-    public Integer getVersion() {
-        return version;
-    }
-
-    public void setVersion(Integer version) {
-        this.version = version;
-    }
+    @Column(name = "VERSION")
+    private Integer version;
 
     @Basic
     @Column(name = "NUMBER")

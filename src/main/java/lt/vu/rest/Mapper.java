@@ -5,7 +5,7 @@ import lt.vu.entities.Repair;
 
 import java.util.stream.Collectors;
 public class Mapper {
-    public static PcDto convertToGunDto(Pc pc) {
+    public static PcDto convertToPCDto(Pc pc) {
         if (pc != null) {
             PcDto pcDto = new PcDto();
             pcDto.setPcName(pc.getPcName());

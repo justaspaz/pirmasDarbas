@@ -1,11 +1,11 @@
 package lt.vu.services;
+
 import javax.enterprise.context.ApplicationScoped;
-import javax.enterprise.inject.Default;
-import java.io.Serializable;
+import javax.enterprise.inject.Alternative;
 import java.security.SecureRandom;
 @ApplicationScoped
-@Default
-public class PCRepairNumberGenerator implements IPcNumberGebarator{
+@Alternative
+public class PCLowGenarator implements IPcNumberGebarator{
     private SecureRandom secureRandom = new SecureRandom();
     @Override
     public Integer genearteReapirNumber() {
@@ -13,7 +13,7 @@ public class PCRepairNumberGenerator implements IPcNumberGebarator{
             Thread.sleep(3000);
         } catch (InterruptedException e) {
         }
-        Integer generatedNumber = 10000 + secureRandom.nextInt(20000);
+        Integer generatedNumber = 10 + secureRandom.nextInt(100);
         return generatedNumber;
     }
 }

@@ -14,7 +14,7 @@ public class AsusPCDAO extends PCDAO implements IPCDAO{
     @Override
     public List<Pc> loadAll() {
         return em
-                .createQuery("select pc from Pc pc where pc.brand='asus'", Pc.class)
+                .createQuery("select p from Pc as p where p.brand='asus'", Pc.class)
                 .getResultList();
     }
 

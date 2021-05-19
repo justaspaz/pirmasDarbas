@@ -1,6 +1,9 @@
 package lt.vu.usecases;
+import lt.vu.services.IPcNumberGebarator;
 import lt.vu.services.PCRepairNumberGenerator;
 import lt.vu.interceptors.LoggedInvocation;
+
+import javax.enterprise.context.ApplicationScoped;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.context.FacesContext;
 import javax.inject.Inject;
@@ -9,11 +12,12 @@ import java.io.Serializable;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 import java.util.concurrent.ExecutionException;
-@SessionScoped
+@ApplicationScoped
 @Named
 public class GeneratePcRepairNumber implements Serializable{
+
     @Inject
-    private PCRepairNumberGenerator pcNumberGenerator;
+    private IPcNumberGebarator pcNumberGenerator;
 
     private CompletableFuture<Integer> pcNumberGenerationTask = null;
 

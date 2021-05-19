@@ -35,12 +35,14 @@ public class UpdatePcDetails implements Serializable, IUpdatePcDetails  {
         this.pc = pcDAO.findOne(pcId);
     }
     @Override
-    @Transactional(Transactional.TxType.REQUIRES_NEW)
+    @Transactional
+    @LoggedInvocation
     public String updatePcName() throws InterruptedException {
-        TimeUnit.SECONDS.sleep(3);
+        TimeUnit.SECONDS.sleep(2);
         try {
             pcDAO.update(this.pc);
         } catch (OptimisticLockException e) {
+            System.out.println("------------------------------------------------");
             return "pc?faces-redirect=true&pcId=" + this.pc.getId() + "&error=optimistic-lock-exception";
         }
         return "pc?faces-redirect=true&pcId=" + this.pc.getId();

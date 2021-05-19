@@ -3,13 +3,18 @@ package lt.vu.persistence;
 import lt.vu.entities.Pc;
 
 import javax.enterprise.context.ApplicationScoped;
+import javax.enterprise.inject.Default;
 import javax.inject.Inject;
 import javax.persistence.EntityManager;
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 @ApplicationScoped
 public class PCDAO implements IPCDAO {
+    public void setEm(EntityManager em) {
+        this.em = em;
+    }
     @Inject
     private EntityManager em;
     @Override
@@ -27,8 +32,13 @@ public class PCDAO implements IPCDAO {
     @Override
     @Transactional(Transactional.TxType.REQUIRES_NEW)
     public Pc update(Pc pc) {
-        pc = em.merge(pc);
-        em.flush();
+        try {
+            pc = em.merge(pc);
+            Thread.sleep(2000);
+            em.flush();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         return pc;
     }
 }

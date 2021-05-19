@@ -32,7 +32,7 @@ public class PcController {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
         List<PcDto> pcDtos = pcs.stream()
-                .map(Mapper::convertToGunDto)
+                .map(Mapper::convertToPCDto)
                 .collect(Collectors.toList());
         return Response.ok(pcDtos).build();
     }
@@ -46,7 +46,7 @@ public class PcController {
         if (pc == null) {
             return Response.status(Response.Status.NOT_FOUND).build();
         }
-        return Response.ok(Mapper.convertToGunDto(pc)).build();
+        return Response.ok(Mapper.convertToPCDto(pc)).build();
     }
 
     @Path("/put/{id}/{pcName}/{brand}")
